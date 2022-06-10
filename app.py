@@ -49,9 +49,23 @@ def login():
 
 @app.route("/user")
 def user():
-    if "username" in session:
+    # Check if there is a current user logged in
+    if "username" in session: 
         username = session['username']
-        return render_template("user.html", username=username)
+        
+        # Get transactions and current bank balance
+
+        # Obtain connection and cursors for SQL Querying
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT id FROM users WHERE username = %s", (username,))
+        id = cursor.fetchall()
+        id = id[0]
+        cursor.execute("SELECT bank_balance FROM transactions WHERE user_id = %s", (id,))
+        transactions = cursor.fetchall()[0][0]
+        print(transactions)
+
+        return render_template("user.html", username=username, transactions=transactions)
     else:
         return redirect("/login")
 

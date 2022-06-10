@@ -5,13 +5,13 @@
     </head>
     <body>
         <nav>
-            
             <a href="/login">Login</a>
             <a href="/register">Register</a>
             {% if username %}
                 <a href="/logout">Logout</a>
             {% endif %}
         </nav>
-        <h1>This is a heading</h1>
+        {% block main %}
+        {% endblock %}
     </body>
 </html>

@@ -1,12 +1,22 @@
-<form action="/register" method="post" id="form1">
-    <div>
-        <input autocomplete="off" autofocus id="username" name="username" placeholder="Username" type="text">
-        <input id="password" name="password" placeholder="Password" type="password">
-        <input id="confirmation" name="confirmation" placeholder="Confirm password" type="password">
-    </div>
-    <div>
-        <input id="first_name" name="first_name" placeholder="First name" type="text">
-        <input id="surname" name="surname" placeholder="Surname" type="text">
-        <button type="submit" form="form1" value="Register">Register</button>
-    </div>
-</form>
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+    <form action="/register" method="post" id="form1">
+        <div>
+            <input autocomplete="off" autofocus id="username" name="username" placeholder="Username" type="text">
+            <input id="password" name="password" placeholder="Password" type="password">
+            <input id="confirmation" name="confirmation" placeholder="Confirm password" type="password">
+        </div>
+        <div>
+            <input id="first_name" name="first_name" placeholder="First name" type="text">
+            <input id="surname" name="surname" placeholder="Surname" type="text">
+            <button type="submit" form="form1" value="Register">Register</button>
+        </div>
+    </form>
+    
+{% endblock %}
